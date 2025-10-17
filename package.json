@@ -1,0 +1,25 @@
+{
+  "name": "heddle-language",
+  "displayName": "Heddle Language",
+  "description": "Language support for the heddle language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.105.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "heddle",
+      "aliases": ["Heddle", "heddle", "he"],
+      "extensions": [".he"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "heddle",
+      "scopeName": "source.heddle",
+      "path": "./syntaxes/heddle.tmLanguage.json"
+    }]
+  }
+}
