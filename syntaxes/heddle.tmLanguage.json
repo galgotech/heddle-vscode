@@ -1,41 +1,85 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "Heddle",
-	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		},
-		{
-			"include": "#prql"
-		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.heddle",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.heddle",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.heddle",
-					"match": "\\\\."
-				}
-			]
-		},
-		"prql": {
-            "name": "string.unquoted.prql.heddle",
+    "scopeName": "source.heddle",
+    "name": "Heddle",
+    "patterns": [
+        { "include": "#comments" },
+        { "include": "#prql" },
+        { "include": "#strings" },
+        { "include": "#numbers" },
+        { "include": "#keywords" },
+        { "include": "#operators" },
+        { "include": "#punctuation" },
+        { "include": "#identifiers" }
+    ],
+    "repository": {
+        "prql": {
+            "name": "source.prql",
             "begin": "\\(",
             "end": "\\)",
-            "contentName": "source.prql"
+            "patterns": [
+                {
+                    "include": "source.prql"
+                }
+            ]
+        },
+        "identifiers": {
+            "patterns": [
+                {
+                    "name": "variable.name.heddle",
+                    "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b"
+                }
+            ]
+        },
+        "punctuation": {
+            "patterns": [
+                {
+                    "name": "punctuation.definition.heddle",
+                    "match": "[\\{\\}\\[\\]\\(\\),:;]"
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.heddle",
+                    "match": "\\b(import|let|func|true|false|null)\\b"
+                }
+            ]
+        },
+        "operators": {
+            "patterns": [
+                {
+                    "name": "keyword.operator.heddle",
+                    "match": "(\\||>|<|->|\\?)"
+                }
+            ]
+        },
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.line.double-slash.heddle",
+                    "match": "//.*"
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.double.heddle",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.heddle",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "numbers": {
+            "patterns": [
+                {
+                    "name": "constant.numeric.heddle",
+                    "match": "\\b-?[0-9]+(\\.[0-9]+)?\\b"
+                }
+            ]
         }
-	},
-	"scopeName": "source.heddle"
+    }
 }
