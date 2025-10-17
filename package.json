@@ -7,7 +7,15 @@
     "vscode": "^1.105.0"
   },
   "categories": [
+    "Data Science",
+    "Formatters",
     "Programming Languages"
+  ],
+  "keywords": [
+    "data tools",
+    "functional programming",
+    "workflow",
+    "pipeline"
   ],
   "contributes": {
     "languages": [{
