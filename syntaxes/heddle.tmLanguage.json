@@ -17,11 +17,17 @@
             "begin": "\\(",
             "end": "\\)",
             "patterns": [
-                {
-                    "include": "source.prql"
-                }
+                { "include": "#prqlKeywords" }
             ]
         },
+		"prqlKeywords": {
+			"patterns": [
+				{
+					"name": "prqlKeywords.control.prql",
+					"match": "\\b(let|into|case|prql|type|module|internal|from|from_text|select|derive|filter|take|sort|join|aggregate|group|null|true|false)\\b"
+				}
+			]
+		},
         "identifiers": {
             "patterns": [
                 {
