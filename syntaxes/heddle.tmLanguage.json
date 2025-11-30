@@ -64,7 +64,7 @@
             "patterns": [
                 {
                     "name": "keyword.control.heddle",
-                    "match": "\\b(import|schema|step|handler|workflow|let|true|false|null)\\b"
+                    "match": "\\b(import|resource|schema|step|handler|workflow|let|true|false|null)\\b"
                 }
             ]
         },
