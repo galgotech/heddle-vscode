@@ -22,7 +22,14 @@
     "type": "git",
     "url": "https://github.com/galgotech/heddle-vscode.git"
   },
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onLanguage:heddle"
+  ],
   "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
     "vsce:package": "vsce package",
     "vsce:publish": "vsce publish"
   },
@@ -48,24 +55,18 @@
         "path": "./syntaxes/heddle.tmLanguage.json"
       }
     ],
-    "configuration": {
-      "title": "Heddle Configuration",
-      "type": "object",
-      "properties": {
-        "[heddle]": {
-          "editor.tabSize": 2,
-          "editor.insertSpaces": true
-        }
-      }
-    },
     "configurationDefaults": {
       "[heddle]": {
         "editor.tabSize": 2,
-        "editor.insertSpaces": true
+        "editor.insertSpaces": true,
+        "editor.formatOnType": true
       }
     }
   },
   "devDependencies": {
-    "@vscode/vsce": "^3.7.1"
+    "@types/node": "^24.10.1",
+    "@types/vscode": "^1.106.1",
+    "@vscode/vsce": "^3.7.1",
+    "typescript": "^5.9.3"
   }
 }
