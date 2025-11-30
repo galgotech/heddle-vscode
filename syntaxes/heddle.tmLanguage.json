@@ -2,32 +2,44 @@
     "scopeName": "source.heddle",
     "name": "Heddle",
     "patterns": [
-        { "include": "#comments" },
-        { "include": "#prql" },
-        { "include": "#strings" },
-        { "include": "#numbers" },
-        { "include": "#keywords" },
-        { "include": "#operators" },
-        { "include": "#punctuation" },
-        { "include": "#identifiers" }
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#prql"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#numbers"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#types"
+        },
+        {
+            "include": "#operators"
+        },
+        {
+            "include": "#punctuation"
+        },
+        {
+            "include": "#identifiers"
+        }
     ],
     "repository": {
         "prql": {
-            "name": "source.prql",
             "begin": "\\(",
             "end": "\\)",
             "patterns": [
-                { "include": "#prqlKeywords" }
+                {
+                    "include": "source.prql"
+                }
             ]
         },
-		"prqlKeywords": {
-			"patterns": [
-				{
-					"name": "prqlKeywords.control.prql",
-					"match": "\\b(let|into|case|prql|type|module|internal|from|from_text|select|derive|filter|take|sort|join|aggregate|group|null|true|false)\\b"
-				}
-			]
-		},
         "identifiers": {
             "patterns": [
                 {
@@ -40,7 +52,7 @@
             "patterns": [
                 {
                     "name": "punctuation.definition.heddle",
-                    "match": "[\\{\\}\\[\\]\\(\\),:;]"
+                    "match": "[\\{\\}\\[\\]\\(\\),:;=]"
                 }
             ]
         },
@@ -48,7 +60,15 @@
             "patterns": [
                 {
                     "name": "keyword.control.heddle",
-                    "match": "\\b(import|let|func|true|false|null)\\b"
+                    "match": "\\b(import|schema|step|handler|workflow|let|true|false|null)\\b"
+                }
+            ]
+        },
+        "types": {
+            "patterns": [
+                {
+                    "name": "support.type.heddle",
+                    "match": "\\b(int|string|float|bool|timestamp)\\b"
                 }
             ]
         },
@@ -56,7 +76,7 @@
             "patterns": [
                 {
                     "name": "keyword.operator.heddle",
-                    "match": "(\\||>|<|->|\\?)"
+                    "match": "(\\||->|\\?)"
                 }
             ]
         },

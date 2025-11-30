@@ -28,6 +28,22 @@
       "language": "heddle",
       "scopeName": "source.heddle",
       "path": "./syntaxes/heddle.tmLanguage.json"
-    }]
+    }],
+    "configuration": {
+      "title": "Heddle Configuration",
+      "type": "object",
+      "properties": {
+        "[heddle]": {
+          "editor.tabSize": 2,
+          "editor.insertSpaces": true
+        }
+      }
+    },
+    "configurationDefaults": {
+      "[heddle]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+      }
+    }
   }
 }
