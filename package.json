@@ -2,9 +2,10 @@
   "name": "heddle-language",
   "displayName": "Heddle Language",
   "description": "Language support for the heddle language",
+  "publisher": "galgotech",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.105.0"
+    "vscode": "^1.104.0"
   },
   "categories": [
     "Data Science",
@@ -17,18 +18,36 @@
     "workflow",
     "pipeline"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/galgotech/heddle-vscode.git"
+  },
+  "scripts": {
+    "vsce:package": "vsce package",
+    "vsce:publish": "vsce publish"
+  },
   "contributes": {
-    "languages": [{
-      "id": "heddle",
-      "aliases": ["Heddle", "heddle", "he"],
-      "extensions": [".he"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "heddle",
-      "scopeName": "source.heddle",
-      "path": "./syntaxes/heddle.tmLanguage.json"
-    }],
+    "languages": [
+      {
+        "id": "heddle",
+        "aliases": [
+          "Heddle",
+          "heddle",
+          "he"
+        ],
+        "extensions": [
+          ".he"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "heddle",
+        "scopeName": "source.heddle",
+        "path": "./syntaxes/heddle.tmLanguage.json"
+      }
+    ],
     "configuration": {
       "title": "Heddle Configuration",
       "type": "object",
@@ -45,5 +64,8 @@
         "editor.insertSpaces": true
       }
     }
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.7.1"
   }
 }

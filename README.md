@@ -1,65 +1,66 @@
-# heddle-language README
+# Heddle Language Support for VS Code
 
-This is the README for your extension "heddle-language". After writing up a brief description, we recommend including the following sections.
+Heddle is a functional data pipeline language designed for clarity, type safety, and ease of use. This extension provides rich language support for Heddle in Visual Studio Code.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Syntax Highlighting**: Colorization for keywords, types, strings, comments, and more.
+- **Snippets**: Common code patterns to speed up development.
+- **Bracket Matching**: Automatic matching of parentheses, braces, and brackets.
 
-For example if there is an image subfolder under your extension project workspace:
+## Usage
 
-\!\[feature X\]\(images/feature-x.png\)
+Create a file with the `.he` extension to start using Heddle.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+### Example
 
-## Requirements
+```heddle
+import "std" std
+import "fhub" fhub
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+schema User = {
+  id: int,
+  name: string,
+  email: string,
+  active: bool,
+  created_at: timestamp,
+  preferences: {
+    theme: string,
+    notifications: bool
+  }
+}
 
-## Extension Settings
+step LoadUsers -> User = std.io.load_csv {
+  path: "users.csv",
+  delimiter: ","
+}
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+handler ProcessUsers User -> User = fhub.users.process {
+  mode: "batch"
+}
 
-For example:
+workflow UserOnboarding {
+  let raw_users = LoadUsers
+  
+  let processed = raw_users 
+    | (filter active == true) ? ProcessUsers
+    | (derive full_name = f"{name} ({email})")
 
-This extension contributes the following settings:
+  let final = processed | (take 100)
+}
+```
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## Installation
 
-## Known Issues
+1. Open Visual Studio Code.
+2. Go to the Extensions view (`Ctrl+Shift+X`).
+3. Search for "Heddle Language".
+4. Click **Install**.
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+## Contributing
 
-## Release Notes
+Contributions are welcome! Please see our [GitHub repository](https://github.com/galgotech/heddle-vscode) for more information.
 
-Users appreciate release notes as you update your extension.
+## License
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+[MIT](LICENSE)
