@@ -6,6 +6,9 @@
             "include": "#comments"
         },
         {
+            "include": "#resource-injection"
+        },
+        {
             "include": "#prql"
         },
         {
@@ -31,6 +34,10 @@
         }
     ],
     "repository": {
+        "resource-injection": {
+            "name": "entity.name.tag.heddle",
+            "match": "<[a-zA-Z_][a-zA-Z0-9_]*=[^>]+>"
+        },
         "prql": {
             "begin": "\\(",
             "end": "\\)",
@@ -118,7 +125,11 @@
             "patterns": [
                 {
                     "name": "keyword.control.heddle",
-                    "match": "\\b(import|resource|schema|step|handler|workflow|let|true|false|null)\\b"
+                    "match": "\\b(import|resource|schema|step|handler|workflow|let)\\b"
+                },
+                {
+                    "name": "constant.language.heddle",
+                    "match": "\\b(true|false|null)\\b"
                 }
             ]
         },
@@ -126,7 +137,7 @@
             "patterns": [
                 {
                     "name": "support.type.heddle",
-                    "match": "\\b(int|string|float|bool|timestamp)\\b"
+                    "match": "\\b(int|string|float|bool|timestamp|dict|list)\\b"
                 }
             ]
         },
@@ -134,7 +145,7 @@
             "patterns": [
                 {
                     "name": "keyword.operator.heddle",
-                    "match": "(\\||->|\\?)"
+                    "match": "(\\||->|\\?|=|\\<|\\>)"
                 }
             ]
         },
@@ -175,11 +186,11 @@
         },
         "prql-constants": {
             "name": "constant.language",
-            "match": "true|false|null"
+            "match": "\\b(true|false|null)\\b"
         },
         "prql-datatypes": {
             "name": "storage.type",
-            "match": "(bool|int8|int16|int32|int64|int128|int|float|text|set)\\b"
+            "match": "\\b(bool|int8|int16|int32|int64|int128|int|float|text|set)\\b"
         },
         "prql-escape": {
             "name": "constant.character.escape",
@@ -189,7 +200,7 @@
             "patterns": [
                 {
                     "name": "keyword.control.prql",
-                    "match": "\\b(let|into|case|prql|type|module|internal|from|from_text|select|derive|filter|take|sort|join|aggregate|group|null|true|false)\\b"
+                    "match": "\\b(let|into|case|prql|type|module|internal|from|from_text|select|derive|filter|take|sort|join|aggregate|group)\\b"
                 }
             ]
         },
